@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eclipse Networks</title>
+  <link href="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+  <style>
+    @font-face {
+      font-family: Qurova;
+      src: url(QurovaDEMO-Medium.otf);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: black;
+      color: white;
+      font-family: Qurova, sans-serif;
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(to right, #000000, #ffffff, #000000, #3d3d3d, #ffffff, #b8b8b8, #000000);
+      background-size: 200%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: text-animation-EN 2.5s linear infinite;
+    }
+
+    @keyframes text-animation-EN {
+      to {
+        background-position: 200%;
+      }
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      opacity: 0.85;
+      background: linear-gradient(to right, #000000, #ffffff, #000000, #3d3d3d, #ffffff, #b8b8b8, #000000);
+      background-size: 200%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: text-animation-EN 2.5s linear infinite;
+    }
+
+    .projects-container {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .project-button, .project-button1, .project-button2 {
+      width: 170px;
+      height: 170px;
+      background: linear-gradient(to right, #000000, #000000, #222222, #000000, #000000, #000000, #000000);
+      background-size: 200%;
+      border: 1px solid white;
+      cursor: pointer;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      transition: transform 0.3s, border 0.6s;
+      animation: text-animation-EN 3s ease-in-out infinite;
+    }
+
+    .project-button1 {
+      border: 1px solid rgb(255, 34, 34);
+    }
+
+    .project-button2 {
+      border: 1px solid rgb(0, 255, 238);
+    }
+
+    .project-button:hover, .project-button1:hover, .project-button2:hover {
+      transform: scale(1.06);
+    }
+
+    .project-button1:hover {
+      border: 2px solid rgb(255, 48, 48);
+    }
+
+    .project-button img, .project-button1 img, .project-button2 img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.363);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    } 
+
+    .modal-content {
+      background: #222;
+      padding: 2rem;
+      border-radius: 1rem;
+      max-width: 500px;
+      width: 90%;
+      color: #fff;
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 1rem;
+      width: 100%;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 6px;
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(90px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(-50%);
+      background: #111;
+      border-radius: 1rem;
+      padding: 0.5rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      z-index: 10;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: white;
+      padding: 0.6rem;
+      transition: background 0.3s ease;
+      border-radius: 0.5rem;
+    }
+
+    .sidebar button:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar .lucide {
+      width: 24px;
+      height: 24px;
+    }
+
+    .sidebar button.eclipse {
+      transition: transform 1s ease;
+    }
+
+    .sidebar button.eclipse:hover {
+      transform: rotate(360deg);
+      background-color: transparent;
+      color: rgb(138, 128, 128);
+    }
+
+    main {
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <div class="sidebar">
+  <button class="eclipse" data-label="Theme"><i class="lucide" data-lucide="eclipse"></i></button>
+  <button data-label="Home"><i class="lucide" data-lucide="home"></i></button>
+  <button data-label="Code"><i class="lucide" data-lucide="code"></i></button>
+  <button data-label="Users"><i class="lucide" data-lucide="users"></i></button>
+  <button data-label="Pricing"><i class="lucide" data-lucide="dollar-sign"></i></button>
+  <button data-label="Links"><i class="lucide" data-lucide="link"></i></button>
+  <button data-label="Docs"><i class="lucide" data-lucide="book"></i></button>
+  </div>
+
+  <main>
+    <h1>Projects</h1>
+    <div class="projects-container">
+      <button class="project-button1" data-title="Vplaza" data-description="Vplaza is a clean, modern game/proxy site that runs off of a bare server. Tabbed, minimalist web proxy." data-img="vplazav1.png">
+        <img src="vplazav1.png" alt="Vplaza" />
+      </button>
+      <button class="project-button2" data-title="Wave" data-description="Wave is a modern, minimalist web proxy. Featuring TONS of games and a full proxy (bare)." data-img="wave.png">
+        <img src="wave.png" alt="Wave" />
+      </button>
+    </div>
+  </main>
+
+  <div class="modal" id="projectModal">
+    <div class="modal-content">
+      <button class="close-btn" id="closeModal">&times;</button>
+      <h2 id="modalTitle"></h2>
+      <img id="modalImage" src="" alt="" style="width:100%; margin-top:1rem; border-radius:0.5rem;">
+      <p id="modalDescription" style="margin-top:1rem;"></p>
+    </div>
+  </div>
+
+  <footer>
+    <div><span class="dot"></span>Eclipse Networks</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 90, "density": { "enable": true, "value_area": 1000 } },
+        "color": { "value": "#ffffff" },
+        "shape": { "type": "circle" },
+        "opacity": {
+          "value": 0.7,
+          "random": true
+        },
+        "size": {
+          "value": 4,
+          "random": true
+        },
+        "line_linked": {
+          "enable": false
+        },
+        "move": {
+          "enable": true,
+          "speed": 1,
+          "direction": "none",
+          "random": true,
+          "straight": false,
+          "out_mode": "out"
+        }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "repulse"
+          },
+          "onclick": {
+            "enable": false
+          },
+          "resize": true
+        }
+      },
+      "retina_detect": true
+    });
+
+    const modal = document.getElementById("projectModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalImage = document.getElementById("modalImage");
+    const modalDescription = document.getElementById("modalDescription");
+
+    document.querySelectorAll('.project-button, .project-button1, .project-button2').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const title = btn.getAttribute('data-title');
+        const description = btn.getAttribute('data-description');
+        const imgSrc = btn.getAttribute('data-img');
+
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        modalTitle.textContent = title;
+        modalImage.src = imgSrc;
+        modalImage.alt = title;
+        modalDescription.textContent = description;
+      });
+    });
+
+    document.getElementById("closeModal").addEventListener("click", () => {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    };
+
+    const buttons = document.querySelectorAll(".sidebar button");
+    const targets = [
+      "index.html",      
+    "index.html",       
+    "projects.html",   
+    "team.html",       
+    "donate.html",    
+    "links.html",    
+    "docs.html"         
+    ];
+
+    buttons.forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        location.href = targets[i];
+      });
+    });
+  </script>
+
+  <script>
+  const maxReloads = 15;
+  const interval = 5000;
+  const key = 'refresh_timestamps';
+
+  const now = Date.now();
+  let timestamps = JSON.parse(localStorage.getItem(key)) || [];
+
+  timestamps = timestamps.filter(ts => now - ts < interval);
+  timestamps.push(now);
+
+  if (timestamps.length > maxReloads) {
+    localStorage.removeItem(key);
+    window.location.href = '404.html';
+  } else {
+    localStorage.setItem(key, JSON.stringify(timestamps));
+  }
+</script>
+
+</body>
+</html>

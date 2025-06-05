@@ -1,0 +1,357 @@
+<!--I swear to fuc**** god if anyone even TRYS to skid my beautiful team page, I WILL come find you-->
+<!--Like why you even looking at this? If you are reading this outloud, I will kill ya.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eclipse Networks</title>
+  <link href="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+  <style>
+    @font-face {
+      font-family: Qurova;
+      src: url(QurovaDEMO-Medium.otf);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: black;
+      color: white;
+      font-family: Qurova;
+      overflow: hidden;
+    }
+
+    body {
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem;
+      animation: fadeIn 1.5s ease forwards;
+      overflow-y: auto;
+    }
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(to right, #000000, #ffffff, #000000, #3d3d3d, #ffffff, #b8b8b8, #000000);
+      background-size: 200%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: text-animation-EN 2.5s linear infinite;
+    }
+
+    @keyframes text-animation-EN {
+      to {
+        background-position: 200%;
+      }
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      opacity: 0.85;
+      background: linear-gradient(to right, #000000, #ffffff, #000000, #3d3d3d, #ffffff, #b8b8b8, #000000);
+      background-size: 200%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: text-animation-EN 2.5s linear infinite;
+    }
+
+    .desc {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 2rem;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      font-family: Qurova;
+    }
+
+    .btn {
+      padding: 0.9rem 2rem;
+      font-size: 1rem;
+      font-weight: 500;
+      background: #1e1e1e;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      font-family: Qurova;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-outline {
+      background: transparent;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 1rem;
+      width: 100%;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 6px;
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(90px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Guys you gotta admit this sidebar is cleeeeean */
+    .sidebar {
+      position: fixed;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(-50%);
+      background: #111;
+      border-radius: 1rem;
+      padding: 0.5rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      z-index: 10;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: white;
+      padding: 0.6rem;
+      transition: background 0.3s ease;
+      border-radius: 0.5rem;
+    }
+
+    .sidebar button:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar .lucide {
+      width: 24px;
+      height: 24px;
+    }
+
+    .sidebar button.eclipse {
+      transition: transform 1s ease;
+    }
+
+    .sidebar button.eclipse:hover {
+      transform: rotate(360deg);
+      background-color: transparent;
+      color: rgb(138, 128, 128);
+    }
+
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      padding: 0 1rem;
+    }
+
+    .member {
+      background: #111111a6;
+      padding: 1rem 1.2rem;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      width: 320px;
+      gap: 1rem;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 10px rgba(255,255,255,0.06);
+    }
+
+    .member:hover {
+      transform: scale(1.03);
+    }
+    
+    .member img {
+      width: 64px;
+      height: 64px;
+      border-radius: 40px;
+      padding: 4px;
+      background: #22222200;
+    }
+    
+    .member h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+    
+    .member p {
+      font-size: 0.95rem;
+      opacity: 0.8;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <div class="sidebar">
+  <button class="eclipse" data-label="Theme"><i class="lucide" data-lucide="eclipse"></i></button>
+  <button data-label="Home"><i class="lucide" data-lucide="home"></i></button>
+  <button data-label="Code"><i class="lucide" data-lucide="code"></i></button>
+  <button data-label="Users"><i class="lucide" data-lucide="users"></i></button>
+  <button data-label="Pricing"><i class="lucide" data-lucide="dollar-sign"></i></button>
+  <button data-label="Links"><i class="lucide" data-lucide="link"></i></button>
+  <button data-label="Docs"><i class="lucide" data-lucide="book"></i></button>
+  </div>
+
+  <main>
+    <h1>Partners:</h1>
+    <div class="buttons">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeuemOk_Akin53H4WYw4RLSpCCjZCUq6EDgxhqwBeE1j5UxZg/viewform" target="_blank"><button class="btn btn-outline">JOIN NOW!</button></a>
+    </div>
+  </main>
+
+  <div class="team-grid">
+  <div class="member">
+    <img src="userblank.png" alt="blank partner">
+    <div>
+      <h3>This could be you!</h3>
+      <p>URL: This could be yours!!!</p>
+    </div>
+  </div>
+  <div class="member">
+    <img src="userblank.png" alt="blank partner">
+    <div>
+      <h3>This could be you!</h3>
+      <p>URL: This could be yours!!!</p>
+    </div>
+  </div>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 90, "density": { "enable": true, "value_area": 1000 } },
+        "color": { "value": "#ffffff" },
+        "shape": { "type": "circle" },
+        "opacity": {
+          "value": 0.7,
+          "random": true
+        },
+        "size": {
+          "value": 4,
+          "random": true
+        },
+        "line_linked": {
+          "enable": false
+        },
+        "move": {
+          "enable": true,
+          "speed": 1,
+          "direction": "none",
+          "random": true,
+          "straight": false,
+          "out_mode": "out"
+        }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "repulse"
+          },
+          "onclick": {
+            "enable": false
+          },
+          "resize": true
+        }
+      },
+      "retina_detect": true
+    });
+
+    lucide.createIcons();
+    
+  </script>
+
+  <script>
+  const buttons = document.querySelectorAll(".sidebar button");
+
+  const targets = [
+    "index.html",      
+    "index.html",       
+    "projects.html",   
+    "team.html",       
+    "donate.html",    
+    "links.html",    
+    "docs.html"        
+  ];
+
+  buttons.forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+      location.href = targets[i];
+    });
+  });
+</script>
+  
+  <script>
+  const maxReloads = 15;
+  const interval = 5000;
+  const key = 'refresh_timestamps';
+
+  const now = Date.now();
+  let timestamps = JSON.parse(localStorage.getItem(key)) || [];
+
+  timestamps = timestamps.filter(ts => now - ts < interval);
+  timestamps.push(now);
+
+  if (timestamps.length > maxReloads) {
+    localStorage.removeItem(key);
+    window.location.href = '404.html';
+  } else {
+    localStorage.setItem(key, JSON.stringify(timestamps));
+  }
+</script>
+
+</body>
+</html>
